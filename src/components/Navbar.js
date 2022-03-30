@@ -18,9 +18,9 @@ export default function Navbar() {
     console.log("HISTORY", history);
     console.log("LOCATION", location);
 
-    // history.location="www.google.com";
+    
     history.push(`movies?query=${query}`);
-    // history.goForward();
+    // history.go();
   }
 
   function handleInputChange(event) {

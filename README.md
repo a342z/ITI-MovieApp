@@ -7,5 +7,6 @@
 ### Details Page
 ![details](https://github.com/a342z/ITI-React-MovieApp/blob/master/screens/details.png)
 
-### Search Query ###### [not working properly]
+### Search Query 
+###### [not working properly]
 ![details](https://github.com/a342z/ITI-React-MovieApp/blob/master/screens/search.png)

@@ -7,11 +7,11 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function MovieCard({ movie }) {
   const favs = useSelector((state) => state.favourites);
-
-  const [fav, setFav] = useState(movie.favourite);
   const dispatch = useDispatch();
 
-  const isFave = (movieId) => {
+  // const [fav, setFav] = useState(movie.favourite);
+
+  const isFav = (movieId) => {
     console.log("favs in function", favs);
     if (!favs) return;
 
@@ -19,33 +19,27 @@ export default function MovieCard({ movie }) {
   };
 
   const addToFav = () => {
-    setFav(true);
-    console.log("fav", fav);
     console.log("movie added");
     dispatch(addToFavourites(movie));
   };
 
   const removeFromFav = (movieId) => {
-    setFav(false);
-    console.log("fav", fav);
-    console.log("movie deleted");
     console.log("movieID", movieId);
     dispatch(deletefromFavourites(movieId));
   };
   return (
     <div className=" h-100">
       <div className="">
-
         <div className="movieImg">
-          <Link to={`/movies/${movie.id}`}>
-            <img
-              src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
-              className="card-img-top"
-              alt={movie.title}
-            />
-          </Link>
+
+          <img
+            src={"https://image.tmdb.org/t/p/w500/" + movie.poster_path}
+            className="card-img-top"
+            alt={movie.title}
+          />
+
           <div className="overlay-left">
-            {!isFave(movie.id) ? (
+            {!isFav(movie.id) ? (
               <i
                 onClick={addToFav}
                 class="fa-regular fa-star large-icon"
@@ -66,7 +60,7 @@ export default function MovieCard({ movie }) {
 
           <div className="overlay-right">
             <Link to={`/movies/${movie.id}`}>
-              <i class="fa-solid fa-circle-question large-icon info-icon"   style={{ color: "#1dbca5" }}></i>
+              <i class="fa-solid fa-circle-info large-icon info-icon"></i>
             </Link>
           </div>
         </div>

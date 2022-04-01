@@ -25,7 +25,7 @@ export default function Movies() {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   // if (!parsed["page"]) setPage(1)
-  // console.log(page,"ppppppppppp insdie effect");
+  // console.log(page,"page insdie effect");
   useEffect(() => {
  
     //   getMovies()
@@ -63,32 +63,32 @@ export default function Movies() {
     }
   }, [location.search]);
 
-  //if u want to change page without query strings
-  // useEffect(()=>{
-  //   getMovies(page)
-  //   .then((res) => {
-  //     // console.log(res.data.results);
-  //     setMovies(res.data.results);
-  //   })
+  // if u want to change page without query strings
+  useEffect(()=>{
+    getMovies(page)
+    .then((res) => {
+      // console.log(res.data.results);
+      setMovies(res.data.results);
+    })
 
-  //   console.log("Page from useEffect",page);
+    console.log("Page from useEffect",page);
 
-  // },[page])
-  // console.log(movies);
+  },[page])
+  console.log(movies);
 
   function nextPage() {
     setPage(page + 1);
-    history.push(`movies?page=${page}`);
+    // history.push(`movies?page=${page}`);
   }
 
   function previousPage() {
     if (page > 1) setPage(page - 1);
     else setPage(1);
-    history.push(`movies?page=${page}`);
+    // history.push(`movies?page=${page}`);
   }
   return (
     <>
-      <div className="row row-cols-1 row-cols-md-6 g-2">
+      <div className="row  row-cols-1  row-cols-lg-6 row-cols-md-4 g-2">
         {movies.map((movie) => {
           return (
             <div className="col mb-4" key={movie.id}>

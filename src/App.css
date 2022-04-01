@@ -5,7 +5,7 @@
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: .3s ease;
+  transition: 0.3s ease;
   cursor: pointer;
 }
 
@@ -15,14 +15,17 @@
   right: 1em;
 
   opacity: 0;
-  transition: .3s ease;
+  transition: 0.3s ease;
   cursor: pointer;
 }
 
-.info-icon:hover{
-  opacity: 0.8;
+.info-icon:hover {
+  color: #20f5d6;
 }
 
+.info-icon {
+  color: #1ac7ae;
+}
 
 .movieImg:hover .overlay-left {
   opacity: 1;
@@ -31,12 +34,11 @@
   opacity: 1;
 }
 
-
-.movieImg{
+.movieImg {
   position: relative;
   width: 100%;
 }
 
-.large-icon{
+.large-icon {
   font-size: 2em;
 }

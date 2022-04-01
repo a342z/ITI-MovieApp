@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/ITI-MovieApp/static/css/main.928faebb.css",
-    "main.js": "/ITI-MovieApp/static/js/main.e5f4c7ac.js",
-    "static/js/787.cd806f60.chunk.js": "/ITI-MovieApp/static/js/787.cd806f60.chunk.js",
+    "main.js": "/ITI-MovieApp/static/js/main.db9ad548.js",
+    "static/js/787.2ae44773.chunk.js": "/ITI-MovieApp/static/js/787.2ae44773.chunk.js",
     "static/media/fa-solid-900.ttf": "/ITI-MovieApp/static/media/fa-solid-900.e615bbcb258550973c16.ttf",
     "static/media/fa-brands-400.ttf": "/ITI-MovieApp/static/media/fa-brands-400.b823fc0dbb5a5f0c21bb.ttf",
     "static/media/fa-solid-900.woff2": "/ITI-MovieApp/static/media/fa-solid-900.59edf72a325ac2048d60.woff2",
@@ -14,11 +14,11 @@
     "static/media/logo.svg": "/ITI-MovieApp/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/ITI-MovieApp/index.html",
     "main.928faebb.css.map": "/ITI-MovieApp/static/css/main.928faebb.css.map",
-    "main.e5f4c7ac.js.map": "/ITI-MovieApp/static/js/main.e5f4c7ac.js.map",
-    "787.cd806f60.chunk.js.map": "/ITI-MovieApp/static/js/787.cd806f60.chunk.js.map"
+    "main.db9ad548.js.map": "/ITI-MovieApp/static/js/main.db9ad548.js.map",
+    "787.2ae44773.chunk.js.map": "/ITI-MovieApp/static/js/787.2ae44773.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.928faebb.css",
-    "static/js/main.e5f4c7ac.js"
+    "static/js/main.db9ad548.js"
   ]
 }

@@ -8,12 +8,12 @@ export const axiosInstance = axios.create({
 axiosInstance.interceptors.request.use(
   function (config) {
     // Do something before request is sent
-    console.log("INTERCEPTOR", config);
+    // console.log("INTERCEPTOR", config);
     config.headers["Content-Type"] = "application/json;charset=utf-8";
     config.headers["Authorization"] =
       "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzZTU5NDAzN2MyMjkxMGYxMjg1NTU1MjcwMmM1MjFmOCIsInN1YiI6IjVmNWVmMDc4ZDhjYzRhMDAzOWYxOGI5YyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.QhHc19PNx19fIYwJWNTYQMYkRXVdO1_vDJrTRuKfjvQ";
 
-    console.log(config);
+    // console.log(config);
     return config;
   },
   function (error) {

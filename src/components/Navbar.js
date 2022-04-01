@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link,NavLink } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
@@ -9,16 +9,15 @@ export default function Navbar() {
 
   const history = useHistory();
   const location = useLocation();
-  console.log("HISTORY", history);
-  console.log("LOCATION", location);
+  // console.log("HISTORY", history);
+  // console.log("LOCATION", location);
 
   const [query, setQuery] = useState("");
   function search(event) {
-    // event.preventDefault();
-    console.log("HISTORY", history);
-    console.log("LOCATION", location);
+    event.preventDefault();
+    // console.log("HISTORY", history);
+    // console.log("LOCATION", location);
 
-    
     history.push(`movies?query=${query}`);
     // history.go();
   }
@@ -36,12 +35,24 @@ export default function Navbar() {
 
       <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div className="navbar-nav">
-          <Link className="nav-item nav-link" to="/movies">
+          <NavLink
+            className="nav-item nav-link"
+            to="/movies"
+            style={(isActive) => ({
+              backgroundColor: isActive ? "#D3D3D3" :"",
+            })}
+          >
             Movies
-          </Link>
-          <Link className="nav-item nav-link" to="/favourite">
+          </NavLink>
+          <NavLink
+            className="nav-item nav-link"
+            to="/favourite"
+            style={(isActive) => ({
+              backgroundColor: isActive ? "#D3D3D3" : "",
+            })}
+          >
             Favourite
-          </Link>
+          </NavLink>
         </div>
       </div>
 
@@ -55,15 +66,15 @@ export default function Navbar() {
           value={query}
           onChange={handleInputChange}
         />
-        {/* <button
+        <button
           onClick={search}
           className="btn btn-outline-success my-2 my-sm-0"
         >
           Search
-        </button> */}
-        <Link className="nav-item nav-link" to={searchLink()}>
+        </button>
+        {/* <Link className="nav-item nav-link" to={searchLink()}>
           Search
-        </Link>
+        </Link> */}
       </form>
     </nav>
   );

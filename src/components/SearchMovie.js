@@ -19,7 +19,7 @@ export default function SearchMovie() {
     // console.log("quary stroe",querystate);
     dispatch(addToQuery(query));
     event.preventDefault();
-    history.push(`movies?query=${query}`);
+    // history.push(`movies?query=${query}`);
     // history.go();
   }
 

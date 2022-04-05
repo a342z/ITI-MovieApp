@@ -13,7 +13,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 function App() {
 
-  const  [languageContext ,setLanguageContext] = useState('en-US');
+  const  [languageContext ,setLanguageContext] = useState('en');
   // const lang = useSelector((state)=>state.language.currentlang)
   return (
     <>

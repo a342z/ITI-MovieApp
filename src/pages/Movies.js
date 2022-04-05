@@ -14,32 +14,29 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getMoviesList, getSearchMovies } from "../store/actions/movies";
 export default function Movies() {
-  const { languageContext, setLanguageContext } = useContext(LanguageContext);
   // useSelector((state) => console.log("state from useSelector", state));
-  const history = useHistory();
-  const location = useLocation();
-  const dispatch = useDispatch();
-
+  // const history = useHistory();
+  // const location = useLocation();
+  
   // console.log("HISTORY", history);
   // console.log("LOCATION", location);
-  const parsed = queryString.parse(location.search);
+  // const parsed = queryString.parse(location.search);
   // console.log("QQQQ", parsed["query"]);
   //   const queryString = parsed["query"];
   //   console.log("Qqq",queryString);
-
+  
   // const [movies, setMovies] = useState([]);
-
+  
+  const { languageContext, setLanguageContext } = useContext(LanguageContext);
+  const dispatch = useDispatch();
   const movies = useSelector((state) => state.movies);
   const query = useSelector((state) => state.query);
-
   const [page, setPage] = useState(1);
 
   useEffect(() => {
     // console.log("useEffect");
-
-    if (!parsed["query"]) dispatch(addToQuery(""));
-
-    console.log("query=",query);
+    // if (!parsed["query"]) dispatch(addToQuery(""));
+    // console.log("query=",query);
     if (query === "") 
     {
       console.log("get movies");
@@ -49,7 +46,7 @@ export default function Movies() {
     }
     else dispatch(getSearchMovies(query, languageContext));
 
-  }, [query, page, languageContext,location]);
+  }, [query, page, languageContext]);
 
 
 

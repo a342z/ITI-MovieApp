@@ -1,14 +1,19 @@
-import React, {useContext} from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import SearchMovie from "./SearchMovie";
 import { LanguageContext } from "../context/language";
+import { addToQuery } from "../store/actions/query";
+import { useDispatch } from "react-redux";
 
 export default function Navbar() {
+  const dispatch = useDispatch();
   const { languageContext, setLanguageContext } = useContext(LanguageContext);
-
+  function resetQuery() {
+    dispatch(addToQuery(""));
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between px-2">
-      <Link className="navbar-brand" to="/">
+      <Link className="navbar-brand" to="/"  onClick={resetQuery}>
         MoviesApp
       </Link>
 
@@ -16,6 +21,7 @@ export default function Navbar() {
         <div className="navbar-nav">
           <NavLink
             className="nav-item nav-link"
+            onClick={resetQuery}
             to="/movies"
             style={(isActive) => ({
               backgroundColor: isActive ? "#D3D3D3" : "",
@@ -24,6 +30,7 @@ export default function Navbar() {
             Movies
           </NavLink>
           <NavLink
+           
             className="nav-item nav-link"
             to="/favourite"
             style={(isActive) => ({
@@ -36,9 +43,11 @@ export default function Navbar() {
           <button
             style={{ marginRight: "10px" }}
             className="btn btn-secondary"
-            onClick={() => setLanguageContext(languageContext === "ar" ? "en" : "ar")}
+            onClick={() =>
+              setLanguageContext(languageContext === "ar" ? "en" : "ar")
+            }
           >
-           {languageContext}
+            {languageContext}
           </button>
         </div>
       </div>

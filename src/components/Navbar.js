@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useContext} from "react";
 import { Link, NavLink } from "react-router-dom";
 import SearchMovie from "./SearchMovie";
+import { LanguageContext } from "../context/language";
 
 export default function Navbar() {
+  const { languageContext, setLanguageContext } = useContext(LanguageContext);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between px-2">
@@ -30,6 +32,14 @@ export default function Navbar() {
           >
             Favourite
           </NavLink>
+
+          <button
+            style={{ marginRight: "10px" }}
+            className="btn btn-secondary"
+            onClick={() => setLanguageContext(languageContext === "ar" ? "en" : "ar")}
+          >
+           {languageContext}
+          </button>
         </div>
       </div>
 

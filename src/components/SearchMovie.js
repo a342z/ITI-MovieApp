@@ -2,14 +2,22 @@ import React from "react";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useState } from "react";
-
+import { useDispatch, useSelector } from "react-redux";
+import { addToQuery
+ } from "../store/actions/query";
 export default function SearchMovie() {
   //   const searchLink = () => `movies?query=${query}`;
   const [query, setQuery] = useState("");
   const history = useHistory();
   const location = useLocation();
 
+  const dispatch = useDispatch();
+
+  // const querystate = useSelector(state => state.query);
+
   function search(event) {
+    // console.log("quary stroe",querystate);
+    dispatch(addToQuery(query));
     event.preventDefault();
     history.push(`movies?query=${query}`);
     // history.go();

@@ -14,7 +14,7 @@ export default function favouritesReducer(state = INITIAL_STATE, action) {
           return item.id !== action.payload;
         });
       }
-      return;
+
 
     default:
       return state;

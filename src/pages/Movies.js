@@ -1,20 +1,24 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import MovieCard from "../components/MovieCard";
 import Pagination from "../components/Pagination";
 import { axiosInstance } from "../network/axiosConfig";
 import { getMovies } from "../network/moviesAPI";
 import { searchMovie } from "../network/moviesAPI";
+import { LanguageContext } from "../context/language";
 import Axios from "axios";
 // const queryString = require("query-string");
 import queryString from "query-string";
-
+import { addToQuery } from "../store/actions/query";
 import { useLocation } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { getMoviesList, getSearchMovies } from "../store/actions/movies";
 export default function Movies() {
-  useSelector((state) => console.log("state from useSelector",state));
+  const { languageContext, setLanguageContext } = useContext(LanguageContext);
+  // useSelector((state) => console.log("state from useSelector", state));
   const history = useHistory();
   const location = useLocation();
+  const dispatch = useDispatch();
 
   // console.log("HISTORY", history);
   // console.log("LOCATION", location);
@@ -22,67 +26,42 @@ export default function Movies() {
   // console.log("QQQQ", parsed["query"]);
   //   const queryString = parsed["query"];
   //   console.log("Qqq",queryString);
-  const [movies, setMovies] = useState([]);
+
+  // const [movies, setMovies] = useState([]);
+
+  const movies = useSelector((state) => state.movies);
+  const query = useSelector((state) => state.query);
+
   const [page, setPage] = useState(1);
-  // if (!parsed["page"]) setPage(1)
-  // console.log(page,"page insdie effect");
+
   useEffect(() => {
- 
-    //   getMovies()
-    if (parsed["query"]) {
-      console.log("there is query string");
-      searchMovie(parsed["query"])
-        .then((res) => {
-          // console.log(res.data.results);
-          setMovies(res.data.results);
-        })
-        .catch((err) => console.log(err));
-    } else {
-      console.log("there is no query string");
-      console.log("page parsing", parsed["page"]);
-      if (!parsed["page"]) {
-        setPage(1)
-        console.log(page," >> page insdie effect");
-        getMovies(1)
-        .then((res) => {
-          // console.log(res.data.results);
-          setMovies(res.data.results);
-        })
-        .catch((err) => console.log(err));
-      }
+    // console.log("useEffect");
 
-      else{
-    
-      getMovies(page)
-        .then((res) => {
-          // console.log(res.data.results);
-          setMovies(res.data.results);
-        })
-        .catch((err) => console.log(err));
-      }
+    if (!parsed["query"]) dispatch(addToQuery(""));
+
+    console.log("query=",query);
+    if (query === "") 
+    {
+      console.log("get movies");
+      console.log("query=",query);
+      dispatch(getMoviesList(page, languageContext));
+      console.log(movies);
     }
-  }, [location.search]);
+    else dispatch(getSearchMovies(query, languageContext));
 
-  // if u want to change page without query strings
-  useEffect(()=>{
-    getMovies(page)
-    .then((res) => {
-      // console.log(res.data.results);
-      setMovies(res.data.results);
-    })
+  }, [query, page, languageContext,location]);
 
-    console.log("Page from useEffect",page);
 
-  },[page])
-  console.log(movies);
+
 
   function nextPage() {
-    setPage(page + 1);
+    setPage((page) => page + 1);
+    // setPage(page + 1);
     // history.push(`movies?page=${page}`);
   }
 
   function previousPage() {
-    if (page > 1) setPage(page - 1);
+    if (page > 1) setPage((page) => page - 1);
     else setPage(1);
     // history.push(`movies?page=${page}`);
   }
@@ -92,7 +71,7 @@ export default function Movies() {
         {movies.map((movie) => {
           return (
             <div className="col mb-4" key={movie.id}>
-              < MovieCard movie={movie} />
+              <MovieCard movie={movie} />
             </div>
           );
         })}

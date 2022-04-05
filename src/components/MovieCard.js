@@ -12,7 +12,7 @@ export default function MovieCard({ movie }) {
   // const [fav, setFav] = useState(movie.favourite);
 
   const isFav = (movieId) => {
-    console.log("favs in function", favs);
+    // console.log("favs in function", favs);
     if (!favs) return;
 
     return favs.find((movie) => movie.id == movieId);
@@ -42,7 +42,7 @@ export default function MovieCard({ movie }) {
             {!isFav(movie.id) ? (
               <i
                 onClick={addToFav}
-                class="fa-regular fa-star large-icon"
+                className="fa-regular fa-star large-icon"
                 aria-hidden="true"
                 style={{ color: "orange" }}
               ></i>
@@ -51,7 +51,7 @@ export default function MovieCard({ movie }) {
                 onClick={() => {
                   removeFromFav(movie.id);
                 }}
-                class="fa-solid fa-star large-icon"
+                className="fa-solid fa-star large-icon"
                 aria-hidden="true"
                 style={{ color: "orange" }}
               ></i>
@@ -60,7 +60,7 @@ export default function MovieCard({ movie }) {
 
           <div className="overlay-right">
             <Link to={`/movies/${movie.id}`}>
-              <i class="fa-solid fa-circle-info large-icon info-icon"></i>
+              <i className="fa-solid fa-circle-info large-icon info-icon"></i>
             </Link>
           </div>
         </div>
